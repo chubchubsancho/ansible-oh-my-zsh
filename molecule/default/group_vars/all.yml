@@ -1,3 +1,16 @@
 ---
-oh-my-zsh-users:
-  - username: gsanchez
+oh_my_zsh_users:
+  - username: root
+    zsh_theme: spaceship
+    plugins:
+      - colored-man-pages
+      - git
+      - sudo
+      - systemadmin
+      - systemd
+      - timer
+      - zsh-256color
+      - zsh-autosuggestions
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - zsh-history-substring-search
