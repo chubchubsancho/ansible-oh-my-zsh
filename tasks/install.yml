@@ -5,7 +5,6 @@
   git:
     repo: "{{ oh-my-zsh-repository }}"
     clone: true
-    depth: 1
     dest: "~/.oh-my-zsh"
   loop: oh-my-zsh-users
   tags:
