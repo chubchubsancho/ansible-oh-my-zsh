@@ -1,0 +1,10 @@
+---
+- name: install required packages
+  package:
+    name:
+      - git
+      - zsh
+    state: present
+  tags:
+    - oh-my-zsh
+    - requirements

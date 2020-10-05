@@ -1,0 +1,13 @@
+---
+- name: clone oh-my-zsh
+  become: yes
+  become_user: "{{ item.username }}"
+  git:
+    repo: "{{ oh-my-zsh-repository }}"
+    clone: yes
+    depth: 1
+    dest: "~/.oh-my-zsh"
+  loop: oh-my-zsh-users
+  tags:
+    - oh-my-zsh
+    - installation

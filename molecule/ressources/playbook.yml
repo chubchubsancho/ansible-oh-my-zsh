@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "install and configure oh-my-zsh"
+      import_role:
+        name: ansible-oh-my-zsh

@@ -1,0 +1,12 @@
+---
+- name: install requirements
+  import_tasks: requirements.yml
+  tags:
+    - oh-my-zsh
+    - requirements
+
+- name: install oh-my-zsh
+  import_tasks: install.yml
+  tags:
+    - oh-my-zsh
+    - installation
