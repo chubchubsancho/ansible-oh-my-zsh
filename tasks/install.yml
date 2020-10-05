@@ -7,7 +7,7 @@
     clone: true
     dest: "~/.oh-my-zsh"
     version: master
-  loop: oh-my-zsh-users
+  loop: "{{ oh-my-zsh-users }}"
   tags:
     - oh-my-zsh
     - installation
