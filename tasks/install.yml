@@ -1,33 +1,16 @@
 ---
 - name: clone oh-my-zsh
   become: true
-  become_user: "{{ user.username }}"
+  become_user: "{{ user.name }}"
   git:
     repo: "{{ oh_my_zsh_repository }}"
     clone: true
     dest: "$HOME/.oh-my-zsh"
     version: master
-  with_items: "{{ oh_my_zsh_users }}"
+  loop: "{{ oh_my_zsh_users | list }}"
   loop_control:
     loop_var: user
-    label: "{{ user.username }}"
-  tags:
-    - oh-my-zsh
-    - installation
-
-- name: copy .zshrc
-  become: true
-  become_user: "{{ user.username }}"
-  template:
-    dest: "{{ user.username }}/.zshrc"
-    src: ./zshrc.j2
-    force: yes
-    mode: 0644
-    backup: true
-  loop: "{{ oh_my_zsh_users }}"
-  loop_control:
-    loop_var: user
-    label: "{{ user.username }}"
+    label: "{{ user.name }}"
   tags:
     - oh-my-zsh
     - installation
