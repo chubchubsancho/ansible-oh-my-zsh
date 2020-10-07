@@ -7,8 +7,8 @@ driver:
 
 lint: |
   set -e
-  yamllint -c ../resources/rules/yamllint
-  ansible-lint
+  yamllint -c ./molecule/resources/rules/yamllint.yaml .
+  ansible-lint .
   flake8
 
 platforms:
@@ -26,7 +26,7 @@ provisioner:
       group_vars: group_vars/
       host_vars: host_vars/
   playbooks:
-    converge: ../resources/playbook.yml
+    converge: ../ressources/playbook.yml
   options:
     vvv: true
 
