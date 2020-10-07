@@ -5,7 +5,7 @@
   template:
     dest: "{{ user.name }}/.zshrc"
     src: ./zshrc.j2
-    force: yes
+    force: true
     mode: 0644
     backup: true
   loop: "{{ oh_my_zsh_users }}"

@@ -5,7 +5,7 @@
   git:
     repo: "{{ oh_my_zsh_repository }}"
     clone: true
-    dest: "$HOME/.oh-my-zsh"
+    dest: "{{ oh_my_zsh_dir }}"
     version: master
   loop: "{{ oh_my_zsh_users | list }}"
   loop_control:

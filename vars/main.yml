@@ -1,2 +1,5 @@
 ---
 oh_my_zsh_repository: "https://github.com/ohmyzsh/ohmyzsh.git"
+
+oh_my_zsh_dir: "$HOME/.oh-my-szh"
+oh_my_zsh_custom_dir: "{{ oh_my_zsh_dir }}/custom"

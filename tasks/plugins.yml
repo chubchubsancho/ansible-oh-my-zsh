@@ -5,7 +5,7 @@
   git:
     repo: "{{ plugin.url }}"
     clone: true
-    dest: "$HOME/.oh-my-zsh/custom/plugins/{{ plugin.name }}"
+    dest: "{{ oh_my_zsh_custom_dir }}/plugins/{{ plugin.name }}"
     version: master
   loop: "{{ user.plugins | list }}"
   loop_control:

@@ -5,7 +5,7 @@
   git:
     repo: "{{ theme.url }}"
     clone: true
-    dest: "$HOME/.oh-my-zsh/custom/themes/{{ theme.name }}"
+    dest: "{{ oh_my_zsh_custom_dir }}/themes/{{ theme.name }}"
     version: master
   loop: "{{ user.themes | list }}"
   loop_control:
@@ -20,8 +20,8 @@
   become: true
   become_user: "{{ user.name }}"
   file:
-    src: "$HOME/.oh-my-zsh/custom/themes/{{ theme.name }}/{{ theme.name }}.zsh-theme"
-    dest: "$HOME/.oh-my-zsh/custom/themes/{{ theme.name }}.zsh-theme"
+    src: "{{ oh_my_zsh_custom_dir }}/themes/{{ theme.name }}/{{ theme.name }}.zsh-theme"
+    dest: "{{ oh_my_zsh_custom_dir }}/themes/{{ theme.name }}.zsh-theme"
     state: link
   loop: "{{ user.themes | list }}"
   loop_control:
