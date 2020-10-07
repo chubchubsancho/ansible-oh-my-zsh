@@ -20,8 +20,7 @@
   become: true
   become_user: "{{ user.name }}"
   file:
-    src: >
-      "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}/{{ theme.name }}.zsh-theme"
+    src: "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}/{{ theme.name }}.zsh-theme"
     dest: "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}.zsh-theme"
     state: link
   loop: "{{ user.themes | list }}"
