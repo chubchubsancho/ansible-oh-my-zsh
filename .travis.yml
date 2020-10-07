@@ -9,7 +9,7 @@ stages:
   - build
 
 env:
-  jobs:
+  global:
     - image=debian version=9
     - image=debian version=10
     # - image=centos version=7
