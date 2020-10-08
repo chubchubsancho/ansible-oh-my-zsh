@@ -38,7 +38,10 @@
     - zshrc
 
 - name: copy custom configuration
-  import_tasks: custom.yml
+  include_tasks: custom.yml
+  loop_control:
+    loop_var: user
+    label: user.name
   tags:
     - oh-my-zsh
     - custom

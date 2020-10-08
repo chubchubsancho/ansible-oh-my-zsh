@@ -3,13 +3,14 @@
   become: true
   become_user: "{{ user.name }}"
   template:
-    src: ".oh-my-zsh/custom/"
+    src: "{{ template }}.zsh.j2"
     dest: "{{ oh_my_zsh_custom_dir }}/"
     force: true
-  loop: "{{ oh_my_zsh_users | list }}"
+  loop: "{{ user.custom_templates | list }}"
   loop_control:
-    loop_var: user
-    label: "{{ user.name }}"
+    loop_var: template
+    label: "{{ template }}"
+  when: user.custom_templates is defined
   tags:
     - oh-my-zsh
     - custom
