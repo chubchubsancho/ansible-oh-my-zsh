@@ -36,3 +36,9 @@
   tags:
     - oh-my-zsh
     - zshrc
+
+- name: copy custom configuration
+  import_tasks: custom.yml
+  tags:
+    - oh-my-zsh
+    - custom

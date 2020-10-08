@@ -1,0 +1,15 @@
+---
+- name: copy custom config
+  become: true
+  become_user: "{{ user.name }}"
+  template:
+    src: ".oh-my-zsh/custom/"
+    dest: "{{ oh_my_zsh_custom_dir }}/"
+    force: true
+  loop: "{{ oh_my_zsh_users | list }}"
+  loop_control:
+    loop_var: user
+    label: "{{ user.name }}"
+  tags:
+    - oh-my-zsh
+    - custom
