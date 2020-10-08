@@ -1,5 +1,6 @@
 ---
-sudo: required
+os: linux
+dist: bionic
 language: python
 services:
   - docker
@@ -7,15 +8,6 @@ services:
 stages:
   - linter
   - build
-
-env:
-  - image=debian version=9
-  - image=debian version=10
-  # - image=centos version=7
-  # - image=centos version=8
-  - image=ubuntu version=18.04
-  - image=ubuntu version=19.10
-  - image=ubuntu version=20.04
 
 jobs:
   fast_finish: true
@@ -31,15 +23,21 @@ jobs:
           quay.io/ansible/molecule:3.0.8
           molecule lint
     - stage: build
-      script:
-        - >
-          travis_wait 20 sleep infinity & docker run --rm -it --env image=$image
-          --env version=$version
-          --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
-          -v /var/run/docker.sock:/var/run/docker.sock
-          -w /tmp/$(basename "$PWD")
-          quay.io/ansible/molecule:3.0.8
-          molecule test
+      env: image=debian version=9
+    - env: image=debian version=10
+    - env: image=ubuntu version=18.04
+    - env: image=ubuntu version=19.10
+    - env: image=ubuntu version=20.04
+
+script:
+  - >
+    travis_wait 20 sleep infinity & docker run --rm -it --env image=$image
+    --env version=$version
+    --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
+    -v /var/run/docker.sock:/var/run/docker.sock
+    -w /tmp/$(basename "$PWD")
+    quay.io/ansible/molecule:3.0.8
+    molecule test
 
 notifications:
   email:
