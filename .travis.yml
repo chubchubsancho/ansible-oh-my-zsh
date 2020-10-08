@@ -5,6 +5,8 @@ language: python
 services:
   - docker
 
+install: skip
+
 stages:
   - linter
   - build
