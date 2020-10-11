@@ -1,0 +1,29 @@
+---
+oh_my_zsh_users:
+  - name: root
+    zsh_theme: spaceship
+    themes:
+      - name: spaceship
+        url: https://github.com/denysdovhan/spaceship-prompt.git
+    plugins:
+      - name: colored-man-pages
+      - name: git
+      - name: sudo
+      - name: systemadmin
+      - name: systemd
+      - name: timer
+      - name: zsh-256color
+        url: https://github.com/chrissicool/zsh-256color.git
+      - name: zsh-autosuggestions
+        url: https://github.com/zsh-users/zsh-autosuggestions.git
+      - name: zsh-completions
+        url: https://github.com/zsh-users/zsh-completions.git
+      - name: zsh-syntax-highlighting
+        url: https://github.com/zsh-users/zsh-syntax-highlighting.git
+      - name: zsh-history-substring-search
+        url: https://github.com/zsh-users/zsh-history-substring-search.git
+    custom_templates:
+      - "{{ role_path }}/.oh-my-zsh/custom/alias"
+      - "{{ role_path }}/.oh-my-zsh/custom/env"
+      - "{{ role_path }}/.oh-my-zsh/custom/history"
+      - "{{ role_path }}/.oh-my-zsh/custom/spaceship"

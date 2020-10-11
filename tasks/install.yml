@@ -1,0 +1,16 @@
+---
+- name: clone oh-my-zsh
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: "{{ oh_my_zsh_repository }}"
+    clone: true
+    dest: "{{ oh_my_zsh_dir }}"
+    version: master
+  loop: "{{ oh_my_zsh_users | list }}"
+  loop_control:
+    loop_var: user
+    label: "{{ user.name }}"
+  tags:
+    - oh-my-zsh
+    - installation
