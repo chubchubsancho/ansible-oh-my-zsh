@@ -36,7 +36,7 @@ galaxy_info:
       version:
         - focal
   galaxy_tags:
-    - oh-my-zsh
+    - ohmyzsh
 
 dependencies: []
 # List your role dependencies here, one per line.
