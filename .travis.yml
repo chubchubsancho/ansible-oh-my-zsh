@@ -1,4 +1,8 @@
 ---
+branches:
+  only:
+  - main
+  
 os: linux
 dist: bionic
 language: python
