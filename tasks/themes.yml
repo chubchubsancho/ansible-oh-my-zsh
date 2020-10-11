@@ -1,0 +1,33 @@
+---
+- name: clone themes
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: "{{ theme.url }}"
+    clone: true
+    dest: "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}"
+    version: master
+  loop: "{{ user.themes | list }}"
+  loop_control:
+    loop_var: theme
+    label: "{{ theme.name }}"
+  when: theme.url is defined
+  tags:
+    - oh-my-zsh
+    - themes
+
+- name: create symlink for themes
+  become: true
+  become_user: "{{ user.name }}"
+  file:
+    src: "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}/{{ theme.name }}.zsh-theme"
+    dest: "{{ oh_my_zsh_themes_dir }}/{{ theme.name }}.zsh-theme"
+    state: link
+  loop: "{{ user.themes | list }}"
+  loop_control:
+    loop_var: theme
+    label: "{{ theme.name }}"
+  when: theme.url is defined
+  tags:
+    - oh-my-zsh
+    - themes
