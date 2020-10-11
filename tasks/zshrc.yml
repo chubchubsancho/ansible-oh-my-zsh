@@ -1,13 +1,14 @@
 ---
 - name: copy .zshrc
   become: true
-  become_user: "{{ user.name }}"
   template:
-    dest: "{{ user.name }}/.zshrc"
-    src: ./zshrc.j2
+    dest: "/home/{{ user.name }}/.zshrc"
+    src: ./.zshrc.j2
     force: true
     mode: 0644
     backup: true
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
   loop: "{{ oh_my_zsh_users }}"
   loop_control:
     loop_var: user
